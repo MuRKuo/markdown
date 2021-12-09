@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>MarkDown文本处理</title>
+	</head>
+	<style type="text/css">
+		html,body{margin: 0;}
+		div{
+			padding: 40px;
+		}
+		input{
+			width: 1000px;
+			height: 100px;
+			line-height: 40px;
+			font-size: 14px;
+			border: none;
+			background-color: #eee;
+			border-radius: 4px;
+			text-indent: 4px;
+			outline: none;
+			-webkit-tap-highlight-color: rgba(0,0,0,0);
+		}
+		button{
+			width: 140px;
+			height: 50px;
+			border: none;
+			border-radius: 4px;
+			outline: none;
+			-webkit-tap-highlight-color: rgba(0,0,0,0);
+			cursor: pointer;
+		}
+	</style>
+	<body>
+		<div align="center">
+			<h1>MarkDown转换</h1>
+			Author : MuRKuo
+
+		</div>
+		
+		<div align="center">
+			<input type="text" id="ipt" placeholder="输入要转换的内容" /> <br /><br />
+			<button id="btn">OK</button>
+		</div>
+
+		<script src="chip/clipboard.min.js"></script>
+
+		<script>
+			var btn = document.querySelector('#btn');
+			btn.addEventListener('click', () => {
+				var str = document.getElementById('ipt').value
+
+				var ttt = str.replace(/^[^}]*?\[/, "")
+				var tr = ttt.replace(/\]\(https\:\/\/i.*?\)/, "")
+
+				const textCopied = ClipboardJS.copy(tr);
+
+			})
+		</script>
+	</body>
+</html>
